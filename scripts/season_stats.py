@@ -20,19 +20,11 @@ for measure_type in provider.SUMMARY_STATS_TYPES:
             response = _requests.get(pull_url, params=api_params, headers=provider.HEADER_DATA)
             data = json.loads(response.content)
             df = pd.DataFrame(data['resultSets'][0]['rowSet'])
-            df.columns = data['resultSets'][0]['headers']
-            df['Year'] = year
+            df.columns = data.columns = map(str.lower, data['resultSets'][0]['headers'])
+            df['year'] = year
             df['season'] = season_type
             all_df.append(df)
     all_df = pd.concat(all_df)
-    all_df['AGE'] = all_df['AGE'].astype(int)
-    all_df = all_df.replace({',': ''}, regex=True)
-    all_df = all_df.fillna(0)
-    all_df['season'] = all_df['season'].str.replace('Regular Season', 'reg')
-
-    all_df['dbTime'] = datetime.now()
-    del all_df['NBA_FANTASY_PTS']
-    del all_df['NBA_FANTASY_PTS_RANK']
-    columns = [col for col in all_df.columns if 'RANK' not in col]
-    db_name = 'season{}'.format(measure_type)
+    all_df['update_time'] = datetime.now()
+    db_name = 'season_{}'.format(measure_type)
     update_database(db_name, all_df)
