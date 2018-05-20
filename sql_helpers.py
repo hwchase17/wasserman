@@ -4,8 +4,8 @@ import pyodbc
 SERVER = 'TSVMLASQL01'
 DATABASE = 'TeamWassBasketball'
 
-CONNECTION_TEMPLATE = ('DRIVER={ODBC Driver 13 for SQL Server};SERVER={server};DATABASE={database};'
-                       'Trusted_Connection=yes;')
+CONNECTION_TEMPLATE = ('DRIVER={{ODBC Driver 13 for SQL Server}};SERVER={server};'
+                       'DATABASE={database};Trusted_Connection=yes;')
 
 DEDUPLICATION_TEMPLATE = query = '''
 DELETE FROM {db_name} 
