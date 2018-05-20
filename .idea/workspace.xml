@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b7d806d-de39-4808-85d0-5060c9d68928" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql_helpers.py" afterPath="$PROJECT_DIR$/sql_helpers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/season_stats.py" afterPath="$PROJECT_DIR$/scripts/season_stats.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="season_stats.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="season_stats.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/season_stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="10" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="37" selection-end-column="36" />
+            <state relative-caret-position="510">
+              <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -46,7 +46,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sql_helpers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sql_helpers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql_helpers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -89,6 +89,7 @@
         <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/huh.py" />
         <option value="$PROJECT_DIR$/sql_helpers.py" />
+        <option value="$PROJECT_DIR$/scripts/season_stats.py" />
       </list>
     </option>
   </component>
@@ -457,16 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/season_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="10" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="37" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -474,6 +465,16 @@
           <folding>
             <element signature="e#0#29#0" expanded="true" />
             <marker date="1526829747119" expanded="true" signature="292:504" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/season_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

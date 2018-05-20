@@ -32,7 +32,7 @@ for measure_type in provider.SUMMARY_STATS_TYPES:
 
     all_df['dbTime'] = datetime.now()
     del all_df['NBA_FANTASY_PTS']
-    del all_df['NBA_FANTASY_PTS1']
+    del all_df['NBA_FANTASY_PTS_RANK']
     columns = [col for col in all_df.columns if 'RANK' not in col]
     db_name = 'season{}'.format(measure_type)
     update_database(db_name, all_df)
