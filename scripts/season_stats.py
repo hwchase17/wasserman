@@ -10,6 +10,10 @@ import nba_stats_api_constants as provider
 from sql_helpers import update_database
 
 
+def _get_db_name_from_measure_type(_measure_type):
+    '''Consistent mapping of measure type to database name for seasons stats'''
+    return 'season_{}'.format(_measure_type.lower())
+
 for measure_type in provider.SUMMARY_STATS_TYPES:
     all_df = []
     for year in range(YEAR, YEAR + 1):
@@ -26,5 +30,5 @@ for measure_type in provider.SUMMARY_STATS_TYPES:
             all_df.append(df)
     all_df = pd.concat(all_df)
     all_df['update_time'] = datetime.now()
-    db_name = 'season_{}'.format(measure_type)
+    db_name = _get_db_name_from_measure_type(measure_type)
     update_database(db_name, all_df)
