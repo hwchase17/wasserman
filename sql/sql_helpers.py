@@ -1,20 +1,10 @@
-from contextlib import closing
-import sqlalchemy
-import pyodbc
 import urllib
+from contextlib import closing
+import pyodbc
+import sqlalchemy
 
-SERVER = 'TSVMLASQL01'
-DATABASE = 'BasketballMaster'
-
-CONNECTION_TEMPLATE = ('DRIVER={{ODBC Driver 13 for SQL Server}};SERVER={server};'
-                       'DATABASE={database};Trusted_Connection=yes;')
-
-DEDUPLICATION_TEMPLATE = '''
-DELETE FROM {db_name} 
-WHERE CONCAT(update_time,' ',player_id,' ',year,' ', season) NOT IN
-(SELECT CONCAT(MAX(update_time),' ',player_id,' ',year,' ', season)
-FROM {db_name} GROUP BY player_id, year, season)
-'''
+from sql.constants import SERVER, DATABASE, CONNECTION_TEMPLATE
+from sql.templates import DEDUPLICATION_TEMPLATE
 
 
 def _get_connection_str(database, server_name=SERVER):
