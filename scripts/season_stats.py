@@ -20,7 +20,7 @@ for measure_type in provider.SUMMARY_STATS_TYPES:
             response = _requests.get(pull_url, params=api_params, headers=provider.HEADER_DATA)
             data = json.loads(response.content)
             df = pd.DataFrame(data['resultSets'][0]['rowSet'])
-            df.columns = data.columns = map(str.lower, data['resultSets'][0]['headers'])
+            df.columns = map(unicode.lower, data['resultSets'][0]['headers'])
             df['year'] = year
             df['season'] = season_type
             all_df.append(df)
