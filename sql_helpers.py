@@ -9,7 +9,7 @@ DATABASE = 'BasketballMaster'
 CONNECTION_TEMPLATE = ('DRIVER={{ODBC Driver 13 for SQL Server}};SERVER={server};'
                        'DATABASE={database};Trusted_Connection=yes;')
 
-DEDUPLICATION_TEMPLATE = query = '''
+DEDUPLICATION_TEMPLATE = '''
 DELETE FROM {db_name} 
 WHERE CONCAT(update_time,' ',player_id,' ',year,' ', season) NOT IN
 (SELECT CONCAT(MAX(update_time),' ',player_id,' ',year,' ', season)
@@ -49,11 +49,17 @@ def _write_to_database(df, db_name, engine, if_exists='append'):
         df.to_sql(db_name, con, if_exists=if_exists)
 
 
+def _run_query(query, engine):
+    '''Execute arbitrary sql query and return results'''
+    with closing(engine.connect()) as con:
+        result = con.execute(query)
+    return result
+
+
 def update_database(db_name, df):
     '''Update database by appending new df to database and then dropping earlier values'''
     con_str = _get_basketball_connection_str()
     engine = _get_engine_from_connection_string(con_str)
     _write_to_database(df, db_name, engine)
     dedup_query = DEDUPLICATION_TEMPLATE.format(db_name=db_name)
-    con = _get_connection_to_db(con_str)
-    con.cursor().execute(dedup_query)
+    _run_query(dedup_query, engine)
