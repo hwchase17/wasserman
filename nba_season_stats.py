@@ -34,3 +34,9 @@ def update_season_stats_for_single_year(year):
         all_df['update_time'] = datetime.now()
         db_name = _get_db_name_from_measure_type(measure_type)
         update_database(db_name, all_df)
+
+
+def update_season_stats_for_many_years(start_year, end_year):
+    '''Update season stats databases for a list of years'''
+    for year in range(start_year, end_year + 1):
+        update_season_stats_for_single_year(year)
